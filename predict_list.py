@@ -15,7 +15,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def Res18(x_name):
-    model = torch.load('model.pht')
+    model = torch.load('model_sort_sel.pht')
     model = model.module.eval()
     model = nn.DataParallel(model)
     model.to(device)
@@ -117,20 +117,10 @@ def Res18(x_name):
 
 path = '.\\data\\test_cif'
 data_list = np.array(os.listdir(path))
-with open('label_cap.txt') as f:
-    y_csv = list(map(lambda x: x.strip().split(','), f.readlines()))
-y_label = {}
-for i in y_csv:
-    try:
-        y_label[i[0]] = i[1]
-    except:
-        continue
-x_local, y_local = [], []
+x_local = []
 for i in data_list:
-    if i[:-4] in y_label:
-        x_local.append(i)
-        y_local.append(float(y_label[i[:-4]]))
-x_local, y_local = np.array(x_local), np.array(y_local)
+    x_local.append(i)
+x_local = np.array(x_local)
 
 result = Res18(x_local)
 with open('predict.csv', 'w', newline='') as f:
@@ -139,6 +129,5 @@ with open('predict.csv', 'w', newline='') as f:
     temp_row = []
     while x_local[i]:
         temp = [x_local[i], result[i]]
-        print(i)
         i = i + 1
         writer.writerow(temp)
