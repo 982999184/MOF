@@ -115,7 +115,7 @@ def Res18(x_name):
     return result_in
 
 
-path = 'E:\\test'
+path = '.\\data\\test_cif'
 data_list = np.array(os.listdir(path))
 with open('label_cap.txt') as f:
     y_csv = list(map(lambda x: x.strip().split(','), f.readlines()))

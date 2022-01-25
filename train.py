@@ -12,7 +12,9 @@ import time
 from colorama import Fore
 
 
-train_path = 'E:\\Lu\\Datasets\\train_npy'
+train_path = '.\\data\\train_npy'
+
+
 def metrice(y_true, y_pred):
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     mape = np.mean(np.abs((y_pred - y_true) / (y_true + 1e-7))) * 100
@@ -41,6 +43,7 @@ def getData():
     x_train, x_val, y_train, y_val = train_test_split(x, y, test_size=0.2, shuffle=True, random_state=5)
 
     return x_train, x_val, y_train, y_val
+
 
 if __name__ == "__main__":
 

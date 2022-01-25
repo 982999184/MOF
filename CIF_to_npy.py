@@ -5,14 +5,14 @@ import numpy as np
 from tqdm import tqdm
 from colorama import Fore
 
-path = r'D:\34W_cif\dev_cifs'
+path = '.\\data\\train_cif\\'
 path_list = os.listdir(path)
-save_path = r"D:\\34W_cif\\sort_npy\\"
+save_path = '.\\data\\train_npy\\'
 vector_size = 223
 temp_x = temp_y = temp_z = -1
 count = 0
 for filename in tqdm(iterable=path_list, bar_format='{l_bar}%s{bar}%s{r_bar}' % (Fore.BLUE, Fore.RESET),):
-    f_filename = path + '\\' + filename
+    f_filename = path + filename
     i = 1
     while linecache.getline(f_filename, i).split()[0] != '_cell_length_a':
         i += 1
