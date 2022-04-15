@@ -20,7 +20,7 @@ def Res18(x_name):
     model = nn.DataParallel(model)
     model.to(device)
     warnings.filterwarnings("ignore")
-    vector_size = 223
+    vector_size = 63
     result_in = []
     for filename in tqdm(iterable=x_name, bar_format='{l_bar}%s{bar}%s{r_bar}' % (Fore.BLUE, Fore.RESET)):
         f_filename = path + "\\" + filename
