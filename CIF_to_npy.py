@@ -8,7 +8,7 @@ from colorama import Fore
 path = '.\\data\\train_cif\\'
 path_list = os.listdir(path)
 save_path = '.\\data\\train_npy\\'
-vector_size = 223
+vector_size = 63
 temp_x = temp_y = temp_z = -1
 count = 0
 for filename in tqdm(iterable=path_list, bar_format='{l_bar}%s{bar}%s{r_bar}' % (Fore.BLUE, Fore.RESET),):
